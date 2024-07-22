@@ -40,10 +40,14 @@ nav a:hover {
   border: 1px solid #4fb8ad;
   border-radius: 10px;
   padding: 20px;
-  
+  margin-top: 20px;
   margin-bottom: 20px;
   transition: box-shadow 0.3s, transform 0.3s;
-  width: 300px
+  width: 30px
+  display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center; /* Centers vertically, if the card height is fixed or defined */
+  text-align: center; 
 }
 .card {
   flex: 1 1 100%; /* Full width on smaller screens */
@@ -65,16 +69,24 @@ nav a:hover {
   height: 100px;
   margin-bottom: 10px;
   border-radius: 10px;
-  position: 
+  position: centre;
+  max-width: 100%; /* Ensures the image doesn't overflow the card */
+  height: auto;
+  margin: 10px; /* Adjusts the space around the image */
+  padding: 15px; /* Adjusts the space inside the border, if any */
+  border: 2px solid #ccc; /* Adds a border with a specific color */
+  border-radius: 8px;
 }
 
 .card h2 {
   font-weight: bold;
   margin-top: 0;
+
+
 }
 
 .card p {
-  font-size: 18px;
+  font-size: 10px;
   color: #222121;
 }
 

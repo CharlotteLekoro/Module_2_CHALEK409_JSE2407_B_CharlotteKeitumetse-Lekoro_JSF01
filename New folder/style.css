@@ -1,12 +1,17 @@
 /* styles.css */
 .container {
   max-width: 1200px;
-  margin: 40px auto;
-  padding: 20px;
+  /*margin: 40px auto;*/
+  margin-top: 20px;
+  padding: 200px;
   background-color: #f9f9f9;
-  border: 1px solid #ddd;
+  border: 1px solid #ff7f50;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  color: #3cb371
+  display : flex;
+  flex-wrap: wrap;
+  gap: 16px; /* Space between the cards */
 }
 
 nav ul {
@@ -31,12 +36,23 @@ nav a:hover {
 }
 
 .card {
-  background-color: #fff;
-  border: 1px solid #ddd;
+  background-color: #e78562;
+  border: 1px solid #4fb8ad;
   border-radius: 10px;
   padding: 20px;
+  
   margin-bottom: 20px;
   transition: box-shadow 0.3s, transform 0.3s;
+  width: 300px
+}
+.card {
+  flex: 1 1 100%; /* Full width on smaller screens */
+}
+
+@media (min-width: 768px) {
+  .card {
+    flex: 1 1 calc(25% - 16px); /* Four cards per row on larger screens */
+  }
 }
 
 .card:hover {
@@ -49,6 +65,7 @@ nav a:hover {
   height: 100px;
   margin-bottom: 10px;
   border-radius: 10px;
+  position: 
 }
 
 .card h2 {
@@ -58,5 +75,120 @@ nav a:hover {
 
 .card p {
   font-size: 18px;
-  color: #666;
+  color: #222121;
+}
+
+@media (min-width: 768px) {
+  .container {
+    grid-template-columns: repeat(4, 1fr); /* 4 columns on larger screens */
+  }
+}
+
+/* Basic reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  padding: 10px 20px;
+  color: white;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-img {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.logo-name {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.nav-link:hover {
+  background-color: #575757;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-button {
+  background-color: #333;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-button:hover {
+  background-color: #575757;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 5px;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-arrow {
+  margin-left: 5px;
+}
+
+.dropdown-container {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 0 20px;
 }

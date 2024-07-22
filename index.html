@@ -30,7 +30,21 @@
           <li><a href="#cart" class="nav-link">Add to Cart</a></li>
         </ul>
       </nav>
-      
+      <div class="dropdown-container">
+        <div class="dropdown">
+          <button class="dropdown-button">
+            Categories
+            <span class="dropdown-arrow">▼</span>
+          </button>
+          <div class="dropdown-content">
+            <a href="#">All Categories</a>
+            <a href="#">Electronics</a>
+            <a href="#">Jewelery</a>
+            <a href="#">Men's Clothing</a>
+            <a href="#">Women's Clothing</a>
+          </div>
+        </div>
+      </div>
 
 <ul x-sort>
     <template x-for="item in items" :key="item.id">

@@ -1,4 +1,3 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,91 +5,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fake Store API with Alpine.js</title>
     <link rel="stylesheet" href="style.css">
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-</head><!-- index.html -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fake Store API with Alpine.js</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 <body class="p-4">
-    <div x-data="storeData()">
-      <nav class="navbar">
-        <div class="logo">
-          <img src="logo.png" alt="Logo" class="logo-img">
-          <span class="logo-name">MyStore</span>
-        </div>
-        <ul class="nav-links">
-          <li><a href="#login" class="nav-link">Login</a></li>
-          <li><a href="#wishlist" class="nav-link">Wishlist</a></li>
-          <li><a href="#cart" class="nav-link">Add to Cart</a></li>
-        </ul>
-      </nav>
-      <div class="dropdown-container">
-        <div class="dropdown">
-          <button class="dropdown-button">
-            Categories
-            <span class="dropdown-arrow">▼</span>
-          </button>
-          <div class="dropdown-content">
-            <a href="#">All Categories</a>
-            <a href="#">Electronics</a>
-            <a href="#">Jewelery</a>
-            <a href="#">Men's Clothing</a>
-            <a href="#">Women's Clothing</a>
-          </div>
-        </div>
-      </div>
-
-<ul x-sort>
-    <template x-for="item in items" :key="item.id">
-        <li x-sort:item>
-            <div class="card">
-                <img :src="item.image" alt="Product Image">
-                <h2 x-text="item.title"></h2>
-                <p x-text="`$${item.price}`"></p>
+    <div x-data="storeData()" x-init="fetchItems()">
+        <nav class="navbar">
+            <div class="logo">
+                <img src="./images/favicon-32x32.png" alt="Logo" class="logo-img">
+                <span class="logo-name">TrendyTresures</span>
             </div>
-        </li>
-    </template>
-</ul>
 
-<!--... (rest of the HTML code remains the same) -->
+            <nav>
+                <input type="checkbox" id="check">
+                <label for="check" class="checkbtn">
+                    <i class="fas fa-bars"></i>
+                </label>
+            </nav>
 
-        <script>
-           function storeData() {
-    return {
-        items: [],
-        sortCol: 'name',
-        sortAsc: true,
+            <!-- Hamburger Menu -->
+            <button @click="open = !open" class="hamburger-label lg:hidden" aria-label="Toggle Navigation">
+                <!-- SVG Icon -->
+                <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
 
-        async fetchItems() {
-            const response = await fetch('https://fakestoreapi.com/products');
-            const data = await response.json();
-            this.items = data;
-        },
+            <!-- Mobile Navigation -->
+            <div x-show="open" class="mobile-nav lg:hidden" @click.away="open = false">
+                <ul class="nav-links-mobile">
+                    <li><a href="#login" class="nav-link" @click="open = false">Login</a></li>
+                    <li><a href="#wishlist" class="nav-link" @click="open = false">Wishlist</a></li>
+                    <li><a href="#cart" class="nav-link" @click="open = false">🛒</a></li>
+                </ul>
+            </div>
 
-        sortItems(col) {
-            this.sortCol = col;
-            this.sortAsc =!this.sortAsc;
-            this.items.sort((a, b) => {
-                if (this.sortAsc) {
-                    return a[col] > b[col]? 1 : -1;
-                } else {
-                    return a[col] < b[col]? 1 : -1;
-                }
-            });
-        },
+            <!-- Desktop Navigation -->
+            <ul class="nav-links hidden lg:flex">
+                <li><a href="#login" class="nav-link">Login</a></li>
+                <li><a href="#wishlist" class="nav-link">Wishlist</a></li>
+                <li><a href="#cart" class="nav-link">🛒</a></li>
+            </ul>
+        </nav>
 
-        init() {
-            this.fetchItems();
-        }
-    }
-}
-        </script>
+        <div x-data="{ open: false }" class="dropdown">
+            <button @click="open = !open" class="dropdown-button">
+                Categories
+                <span class="dropdown-arrow" :class="{ 'open': open }">▼</span>
+            </button>
+            <div x-show="open" class="dropdown-content">
+                <a href="#">All Categories</a>
+                <a href="#">Electronics</a>
+                <a href="#">Jewelry</a>
+                <a href="#">Men's Clothing</a>
+                <a href="#">Women's Clothing</a>
+            </div>
+        </div>
+
+        <ul x-sort class="grid">
+            <template x-for="item in items" :key="item.id">
+                <li x-sort:item class="card">
+                    <img :src="item.image" alt="Product Image">
+                    <h2 x-text="item.title"></h2>
+                    <p x-text="`$${item.price}`"></p>
+                    <p x-text="`Category: ${item.category}`"></p>
+                </li>
+            </template>
+        </ul>
+
+        <script src="script.js"></script>
     </div>
 </body>
 </html>

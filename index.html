@@ -63,16 +63,15 @@
         </div>
 
         <ul x-sort class="grid">
-            <template x-for="item in items" :key="item.id">
-                <li x-sort:item class="card">
-                    <img :src="item.image" alt="Product Image">
-                    <h2 x-text="item.title"></h2>
-                    <p x-text="`$${item.price}`"></p>
-                    <p x-text="`Category: ${item.category}`"></p>
-                </li>
-            </template>
-        </ul>
-
+          <template x-for="item in items" :key="item.id">
+              <li x-sort:item class="card">
+                  <img :src="item.image" alt="Product Image">
+                  <h2 x-text="item.title"></h2>
+                  <p x-text="`$${item.price}`"></p>
+                  <p x-text="`Category: ${item.category}`"></p>
+              </li>
+          </template>
+      </ul>
         <script src="script.js"></script>
     </div>
 </body>

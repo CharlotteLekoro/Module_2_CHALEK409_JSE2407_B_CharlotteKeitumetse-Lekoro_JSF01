@@ -11,3 +11,5 @@ There is a view details button on the cards that allows user to open a modal tha
 The modal currently opens at the bottom of the screen and not on the screen so yo have to scroll all the way down to see the product they clicked on. I am still working to finish this off.
 Another big thing is that i began the project using vanilla css and when i had to do the modal I found modal codes with tailwind css and encorporating the code into my code made the site crash so i have both tailwind and vanilla css. But the code works 😊😂![Uploading MuaKissGIF.gif…]()
 
+The modal is not styled completely, I struggled to get it to not be transparent and the sizing as well. It does however appearover the item when the view details button is clicked
+
